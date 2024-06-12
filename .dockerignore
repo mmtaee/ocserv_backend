@@ -1,0 +1,9 @@
+.venv
+venv/
+.pre-commit-config.yaml
+db.sqlite3
+.gitignore
+.git
+.idea
+.code
+.vscode
