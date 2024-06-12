@@ -1,0 +1,13 @@
+services:
+  backend:
+    container_name: ocserv-backend
+    image: ocserv-backend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8888:8000"
+      - "22443:20443"
+    volumes:
+      - ./:/app
+    entrypoint: ["/entrypoint.sh"]
