@@ -1,11 +1,12 @@
 import graphene
 import graphql_jwt
 
+from ocserv.schema import Query as OcservQuery
 from user.schema import Mutation as UserMutation
 from user.schema import Query as UserQuery
 
 
-class Query(UserQuery, graphene.ObjectType):
+class Query(UserQuery, OcservQuery, graphene.ObjectType):
     pass
 
 
