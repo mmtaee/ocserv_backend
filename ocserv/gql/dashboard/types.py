@@ -9,7 +9,7 @@ class OnlineUserType(graphene.ObjectType):
     averages = graphene.String()
 
 
-class Iroutes(graphene.ObjectType):
+class IroutesType(graphene.ObjectType):
     id = graphene.String()
     username = graphene.String()
     vhost = graphene.String()
@@ -18,7 +18,7 @@ class Iroutes(graphene.ObjectType):
     iroutes = graphene.String()
 
 
-class IPBans(graphene.ObjectType):
+class IPBansType(graphene.ObjectType):
     ip = graphene.String()
     since = graphene.String()
     score = graphene.String()
@@ -26,6 +26,6 @@ class IPBans(graphene.ObjectType):
 
 class DashboardType(graphene.ObjectType):
     online_users = graphene.List(OnlineUserType)
-    ip_bans = graphene.List(IPBans)
-    iroutes = graphene.List(Iroutes)
+    ip_bans = graphene.List(IPBansType)
+    iroutes = graphene.List(IroutesType)
     status = graphene.String()
