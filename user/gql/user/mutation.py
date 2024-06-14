@@ -22,9 +22,7 @@ class CreateAdminUser(graphene.Mutation):
         if create:
             return Response(
                 message="Admin User created successfully",
-                metadata={
-                    "user": {"username": user.username, "is_superuser": user.is_superuser}
-                },
+                metadata={"user": {"username": user.username, "is_superuser": user.is_superuser}},
             )
         return ErrorResponse(status="400", message="Admin user is Already exists")
 
@@ -45,9 +43,7 @@ class CreateStaffUser(graphene.Mutation):
         if create:
             return Response(
                 message="Staff User created successfully",
-                metadata={
-                    "user": {"username": user.username, "is_superuser": user.is_superuser}
-                },
+                metadata={"user": {"username": user.username, "is_superuser": user.is_superuser}},
             )
         return ErrorResponse(status="400", message="Staff user is Already exists")
 
@@ -69,9 +65,7 @@ class UpdateStaffUser(graphene.Mutation):
         try:
             user = User.objects.get(pk=pk)
         except User.DoesNotExist:
-            return ErrorResponse(
-                status=404, message="User matching query does not exist."
-            )
+            return ErrorResponse(status=404, message="User matching query does not exist.")
         for key, val in data.__dict__.items():
             if val is not None:
                 setattr(user, key, val)
@@ -102,10 +96,6 @@ class DeleteStaffUser(graphene.Mutation):
             )
         try:
             User.objects.get(pk=pk, is_superuser=False).delete()
-            return Response(
-                message="Staff User deleted successfully", metadata={"user_id": pk}
-            )
+            return Response(message="Staff User deleted successfully", metadata={"user_id": pk})
         except User.DoesNotExist:
-            return ErrorResponse(
-                status=404, message="User matching query does not exist."
-            )
+            return ErrorResponse(status=404, message="User matching query does not exist.")

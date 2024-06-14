@@ -19,8 +19,7 @@ class CreateConfig(graphene.Mutation):
             return ErrorResponse(status=403, message="Config is configured")
         config = Config.objects.create(**data)
         return Response(
-            message="config created successfully",
-            metadata={"config": model_to_dict(config)},
+            message="config created successfully", metadata={"config": model_to_dict(config)}
         )
 
 

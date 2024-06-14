@@ -4,7 +4,7 @@ from graphql_jwt.decorators import login_required
 from backend.internal.generics import ErrorResponse, Response, ResponseOrError
 from backend.internal.occtl.group import Group
 from ocserv.gql.group.types import ConfigInputType
-from ocserv.gql.group.utils import group_config_repr
+from ocserv.gql.utils import group_config_repr
 
 ocserv_group = Group()
 
@@ -43,9 +43,7 @@ class CreateOcservGroup(graphene.Mutation):
         configs, _ = group_config_repr(data)
         ocserv_group.group_name = name
         ocserv_group.create_or_update_group(configs)
-        return Response(
-            message="Group created successfully", metadata={"group_name": name}
-        )
+        return Response(message="Group created successfully", metadata={"group_name": name})
 
 
 class UpdateOcservGroup(graphene.Mutation):
@@ -77,8 +75,7 @@ class DeleteOcservGroup(graphene.Mutation):
     def mutate(root, info, group_name: str) -> ResponseOrError:
         if group_name == "defaults":
             return ErrorResponse(
-                status=400,
-                message="You are not allowed to delete the defaults ocserv group",
+                status=400, message="You are not allowed to delete the defaults ocserv group"
             )
         ocserv_group.group_name = group_name
         if not ocserv_group.group_exists():

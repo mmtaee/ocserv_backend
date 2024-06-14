@@ -8,7 +8,7 @@ from ocserv.gql.group.types import GroupConfigOrErrorResponse, GroupConfigType
 ocserv_group = Group()
 
 
-class DefaultGroupQuery(graphene.ObjectType):
+class DefaultOcservGroupQuery(graphene.ObjectType):
     ocserv_default_group = graphene.Field(GroupConfigType)
 
     @staticmethod
@@ -17,7 +17,7 @@ class DefaultGroupQuery(graphene.ObjectType):
         return ocserv_group.get_default()
 
 
-class GroupQuery(graphene.ObjectType):
+class OcservGroupQuery(graphene.ObjectType):
     ocserv_group = graphene.Field(
         GroupConfigOrErrorResponse, group_name=graphene.String(required=True)
     )

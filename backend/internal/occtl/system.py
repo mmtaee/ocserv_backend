@@ -13,14 +13,7 @@ class Occtl:
 
     @property
     def online_users(self) -> List[Dict[str, str]]:
-        command = [
-            "sudo",
-            "/usr/bin/occtl",
-            "-j",
-            "show",
-            "users",
-            "--output=json-pretty",
-        ]
+        command = ["sudo", "/usr/bin/occtl", "-j", "show", "users", "--output=json-pretty"]
         result, err = self.execute(command)
         if result and len(result.decode("utf-8")) > 0:
             users = json.loads(result)
@@ -47,8 +40,6 @@ class Occtl:
 
     @property
     def status(self) -> str:
-        p = subprocess.Popen(
-            ["sudo", "/usr/bin/occtl", "show", "status"], stdout=subprocess.PIPE
-        )
+        p = subprocess.Popen(["sudo", "/usr/bin/occtl", "show", "status"], stdout=subprocess.PIPE)
         status_result, err = p.communicate()
         return status_result.decode("utf-8")

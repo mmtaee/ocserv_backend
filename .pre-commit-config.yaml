@@ -15,14 +15,14 @@ repos:
           - --trailing-comma
           - --force-grid-wrap=0
           - --use-parentheses
-          - --line-length=90
+          - --line-length=99
 
   - repo: https://github.com/psf/black
     rev: 24.4.2
     hooks:
       - id: black
         args:
-          - --line-length=90
+          - --line-length=99
           - --safe
           - --skip-string-normalization
           - --skip-magic-trailing-comma
