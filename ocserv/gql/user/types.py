@@ -1,6 +1,7 @@
 import graphene
 from graphene_django.types import DjangoObjectType
 
+from backend.internal.generics import PaginationResponseType
 from ocserv.models import OcservUser
 
 
@@ -15,18 +16,6 @@ class OcservUserType(DjangoObjectType):
     class Meta:
         model = OcservUser
         fields = "__all__"
-
-
-class PaginationInputType(graphene.InputObjectType):
-    page = graphene.Int(required=True)
-    per_page = graphene.Int(required=True)
-
-
-class PaginationResponseType(graphene.ObjectType):
-    page = graphene.Int()
-    pages = graphene.Int()
-    per_page = graphene.Int()
-    total_items = graphene.Int()
 
 
 class OcservUserListType(graphene.ObjectType):

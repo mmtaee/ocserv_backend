@@ -15,3 +15,15 @@ class ErrorResponse(graphene.ObjectType):
 class ResponseOrError(graphene.Union):
     class Meta:
         types = (Response, ErrorResponse)
+
+
+class PaginationInputType(graphene.InputObjectType):
+    page = graphene.Int(required=True)
+    per_page = graphene.Int(required=True)
+
+
+class PaginationResponseType(graphene.ObjectType):
+    page = graphene.Int()
+    pages = graphene.Int()
+    per_page = graphene.Int()
+    total_items = graphene.Int()

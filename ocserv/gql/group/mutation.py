@@ -4,7 +4,7 @@ from graphql_jwt.decorators import login_required
 from backend.internal.generics import ErrorResponse, Response, ResponseOrError
 from backend.internal.occtl.group import Group
 from ocserv.gql.group.types import ConfigInputType
-from ocserv.gql.utils import group_config_repr
+from ocserv.gql.group.utils import group_config_repr
 
 ocserv_group = Group()
 
