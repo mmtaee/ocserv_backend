@@ -1,7 +1,7 @@
 import graphene
 from graphene_django.types import DjangoObjectType
 
-from backend.internal.generics import PaginationResponseType
+from backend.internal.generics import ErrorResponse, PaginationResponseType
 from ocserv.models import OcservUser
 
 
@@ -21,3 +21,8 @@ class OcservUserType(DjangoObjectType):
 class OcservUserListType(graphene.ObjectType):
     ocserv_users = graphene.List(OcservUserType)
     pagination = graphene.Field(PaginationResponseType)
+
+
+class OcservUserOrErrorResponse(graphene.Union):
+    class Meta:
+        types = (OcservUserType, ErrorResponse)

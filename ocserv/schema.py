@@ -8,9 +8,15 @@ from ocserv.gql.group.mutation import (
     UpdateOcservGroup,
 )
 from ocserv.gql.group.query import DefaultOcservGroupQuery, OcservGroupQuery
-from ocserv.gql.user.query import OcservUserQuery
+from ocserv.gql.user.query import OcservUserDetailQuery, OcservUserQuery
 
-queries = (DashboardQuery, DefaultOcservGroupQuery, OcservGroupQuery, OcservUserQuery)
+queries = (
+    DashboardQuery,
+    DefaultOcservGroupQuery,
+    OcservGroupQuery,
+    OcservUserQuery,
+    OcservUserDetailQuery,
+)
 
 
 class Query(*queries):
