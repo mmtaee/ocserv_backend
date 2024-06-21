@@ -1,9 +1,8 @@
 import os
 from typing import AnyStr
-from unittest import case
 
 
-class Group:
+class OcctlGroup:
     GROUP_DIR = "/etc/ocserv/groups"
     DEFAULT = "/etc/ocserv/defaults/group.conf"
 
