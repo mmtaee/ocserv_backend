@@ -8,6 +8,7 @@ from ocserv.gql.group.mutation import (
     UpdateOcservGroup,
 )
 from ocserv.gql.group.query import DefaultOcservGroupQuery, OcservGroupQuery
+from ocserv.gql.stats.query import TrafficStatsQuery
 from ocserv.gql.user.mutation import (
     CreateOcservUser,
     DeleteOcservUser,
@@ -23,6 +24,7 @@ queries = (
     OcservGroupQuery,
     OcservUserQuery,
     OcservUserDetailQuery,
+    TrafficStatsQuery,
 )
 
 

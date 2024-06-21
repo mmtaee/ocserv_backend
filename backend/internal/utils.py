@@ -7,10 +7,12 @@ from backend.internal.generics import PaginationResponseType as PaginationRespon
 
 def pagination(queryset: QuerySet, p: PaginationInput) -> tuple[QuerySet, PaginationResponse]:
     total_items = queryset.count()
-    if p.per_page == 0 or total_items == 0:
-        return queryset, PaginationResponse(page=1, per_page=50, pages=1, total_items=total_items)
     if p.per_page > 100:
         p.per_page = 50
+    if p.per_page == 0 or total_items == 0:
+        return queryset, PaginationResponse(
+            page=1, per_page=p.per_page, pages=1, total_items=total_items
+        )
     if total_items <= p.per_page:
         p.per_page = total_items
     if not queryset.ordered:
